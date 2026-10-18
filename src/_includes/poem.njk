@@ -1,0 +1,34 @@
+---
+layout: base.njk
+bodyClass: page-doc
+---
+{%- set poems = collections.poems -%}
+{%- set idx = -1 -%}
+{%- for p in poems -%}{%- if p.url == page.url -%}{%- set idx = loop.index0 -%}{%- endif -%}{%- endfor -%}
+{%- set newer = poems[idx - 1] if idx > 0 else null -%}
+{%- set older = poems[idx + 1] if idx < poems.length - 1 else null -%}
+
+{% include "masthead.njk" %}
+
+<main class="canvas">
+  <article class="sheet">
+    <p class="sheet-crumb"><a href="/">Internet Arkhive</a> / {{ page.date | isoDate }}</p>
+    {%- if sample %}<p class="sample-note">Sample poem. Replace or delete <code>src/poems/{{ page.fileSlug }}.md</code>.</p>{% endif %}
+    <h1 class="sheet-title">{{ title }}</h1>
+    <p class="sheet-date"><time datetime="{{ page.date | isoDate }}">{{ page.date | longDate }}</time></p>
+    <div class="poem">
+      {{ content | safe }}
+    </div>
+    <p class="sheet-end">{{ content | lineCount }} lines</p>
+  </article>
+
+  <nav class="pager" aria-label="More poems">
+    {%- if older %}<a class="pager-link" href="{{ older.url }}"><span>Older</span>{{ older.data.title }}</a>{% else %}<span></span>{% endif %}
+    {%- if newer %}<a class="pager-link pager-newer" href="{{ newer.url }}"><span>Newer</span>{{ newer.data.title }}</a>{% endif %}
+  </nav>
+
+  <div class="doc-subscribe">
+    {% set formSuffix = "-poem" %}
+    {% include "subscribe.njk" %}
+  </div>
+</main>

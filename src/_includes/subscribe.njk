@@ -1,0 +1,15 @@
+<section class="subscribe" id="subscribe" aria-labelledby="subscribe-title">
+  <div class="subscribe-copy">
+    <h2 id="subscribe-title">Get new poems by email</h2>
+    <p>One email when a new poem goes up. Nothing else. Unsubscribe anytime.</p>
+  </div>
+  <form class="subscribe-form"
+        action="https://buttondown.com/api/emails/embed-subscribe/{{ site.newsletter.username }}"
+        method="post" target="_blank">
+    <label class="sr-only" for="subscribe-email{{ formSuffix }}">Email address</label>
+    <input id="subscribe-email{{ formSuffix }}" type="email" name="email" placeholder="you@example.com" autocomplete="email" required>
+    <input type="hidden" name="embed" value="1">
+    <button type="submit">Subscribe</button>
+  </form>
+  <p class="feedback">Have feedback on a poem? Email me at <a href="mailto:{{ site.contactEmail }}">{{ site.contactEmail }}</a></p>
+</section>

@@ -1,0 +1,17 @@
+{
+  "title": "Internet Arkhive",
+  "tagline": "Poems, filed in the order they were written.",
+  "url": "https://internetarkhive.com",
+  "author": "Justin Nguyen",
+  "newsletter": {
+    "provider": "Buttondown",
+    "username": "internetarkhive"
+  },
+  "social": [
+    {
+      "name": "Instagram",
+      "url": "https://www.instagram.com/fivestarjustin/"
+    }
+  ],
+  "contactEmail": "support@internetarkhive.com"
+}

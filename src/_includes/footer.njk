@@ -1,0 +1,10 @@
+<footer class="footer">
+  <div class="wrap footer-row">
+    <p class="footer-name">Internet Arkhive <span>© {{ "" | year }} {{ site.author }}</span></p>
+    <ul class="social" aria-label="Social media">
+      {%- for s in site.social %}
+      <li><a href="{{ s.url }}" rel="me noopener" target="_blank">{{ s.name }}</a></li>
+      {%- endfor %}
+    </ul>
+  </div>
+</footer>

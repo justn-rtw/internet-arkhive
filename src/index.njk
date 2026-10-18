@@ -1,0 +1,38 @@
+---
+layout: base.njk
+title: Internet Arkhive
+---
+{% include "masthead.njk" %}
+<main class="wrap">
+  <section class="hero">
+    <h1>Internet<br><em>Arkhive</em></h1>
+    <p class="hero-meta">
+      <span>{{ collections.poems | length }} poem{% if collections.poems | length != 1 %}s{% endif %}</span>
+      {%- if collections.poems | length %}
+      <span>Last filed {{ collections.poems[0].date | longDate }}</span>
+      {%- endif %}
+    </p>
+    <p class="hero-tag">{{ site.tagline }}</p>
+  </section>
+
+  <section class="index" aria-label="All poems, newest first">
+    {%- for group in collections.poemsByYear %}
+    <div class="year">
+      <h2 class="year-label">{{ group.year }}</h2>
+      <ol class="entries">
+        {%- for poem in group.items %}
+        <li class="entry">
+          <a href="{{ poem.url }}">
+            <time datetime="{{ poem.date | isoDate }}">{{ poem.date | shortDate }}</time>
+            <span class="entry-title">{{ poem.data.title }}{% if poem.data.sample %} <small class="tag">Sample</small>{% endif %}</span>
+            <span class="entry-line">{{ poem.content | firstLine }}</span>
+          </a>
+        </li>
+        {%- endfor %}
+      </ol>
+    </div>
+    {%- endfor %}
+  </section>
+
+  {% include "subscribe.njk" %}
+</main>

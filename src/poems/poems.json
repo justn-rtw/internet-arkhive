@@ -1,0 +1,4 @@
+{
+  "layout": "poem.njk",
+  "permalink": "/poems/{{ page.fileSlug }}/"
+}
